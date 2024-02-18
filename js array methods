@@ -1,0 +1,174 @@
+
+// **** JS DİZİ METODLARI ****
+
+
+// Push() metodu dizinin sonuna bir eleman ekleyebiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.push('bmw');  // mazda,opel,toyota,bmw
+
+
+// push() metodu geriye dizi eleman sayısını döndürür.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var elemansayisi = cars.push('bmw'); 
+console.log(elemansayisi); // 4
+
+// ******************************************
+
+// Unshift() metodu ile dizinin başına bir eleman ekleyebiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.unshift('bmw');  // bmw,mazda,opel,toyota 
+
+// Unshift() metodu geriye dizi eleman sayısını döndürür.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var elemansayisi = cars.unshift('bmw'); 
+console.log(elemansayisi);  // 4 
+
+// ******************************************
+
+// Splice() Metodu (Ekleme Yapma)
+
+// splice() metodu ile dizinin istediğimiz konumuna eleman ekleme yapabiliriz.
+
+// ** splice() metodunun ilk parametresi ekleme yapılacak olan konum, ikinci parametre ise kaç elemanın silineceğidir.
+
+// ** Örneğimizde 1.indeks den itibaren hiç bir elemanı silme ve 'bmw', 'mercedes' elemanlarını ekle demiş oluyoruz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.splice(1, 0, 'bmw', 'mercedes'); // 'mazda','bmw', 'mercedes','opel','toyota'
+
+
+// Aşağıdaki Örnekte :
+
+// ** 2.indeks den itibaren 2 elemanı siler ve 2 elemanı ekler.
+
+// ** splice() metodu silinen elemanları geriye gönderir.
+
+Örnek
+var cars = ['mazda','bmw', 'mercedes','opel','toyota'];
+var deleted = cars.splice(2, 2, 'volvo', 'audi'); 
+console.log(cars)     // mazda,bmw,volvo,audi,toyota 
+console.log(deleted ) // mercedes,opel
+
+// ******************************************
+
+// Splice() Metodu (Elemen Silme)
+
+// Splice() metodunu veri eklemek için kullanabileceğimiz gibi eleman silmek için de kullanabiliriz.
+
+// Splice() metoduna verdiğimiz ilk parametre hangi indeksden başlasın, ikinci parametre ise kaç eleman silinsin anlamına gelir.
+
+// Dolayısıyla splice(0,1) dediğimizde 0.indeks den başka 1 elemanı sil demiş oluyoruz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.splice(0, 1);  // 'opel','toyota'
+
+// ******************************************
+
+// Pop() metodu ile dizinin en son elemanını sileriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.pop();  // mazda,opel
+
+// pop() metodu silinen son elemanı döndürür.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var result = cars.pop();  
+console.log(result)   //toyota
+
+// ******************************************
+
+// shift() metodu ile dizinin ilk elemanını silebiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars.shift();  // opel,toyota
+
+// shift() metodu silinen elemanı döndürür.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var result = cars.shift();  
+console.log(result)   // mazda
+
+// ******************************************
+
+// Dizi Elemanını Güncelleme
+
+// Javascript dizi içerisindeki her bir eleman 0' dan başlayan bir indeks numarasına sahiptir. Dolayısıyla güncellemek istediğimiz elemanın indeks numarasını kullanarak güncelleme işlemi yapabiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+cars[2] = 'bmw';  // 'mazda','opel','bmw'
+// Peki olmayan bir indeks numarasını kullanırsak?
+
+Örnek
+var cars = ['mazda','opel','toyota','bmw'];
+cars[cars.length] = "mercedes"; // 'mazda','opel','toyota','bmw','mercedes'
+// cars.length bize cars dizisinin eleman sayısı olan 4 bilgisini döndürür. 
+
+// cars[cars.length] ise cars[4] 'e eşittir ve bu indeks de olan bir eleman olmadığından dolayı dizi üzerine bir eleman eklemiş oluruz.
+
+// ******************************************
+
+// Javascript Dizisini String Veriye Çevirme
+// Js array' i string bir veriye toString() metodu ile çevirebiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var arabalar = cars.toString();   // mazda,opel,toyota
+// ** Artık arabalar bir string veridir ve indeks numarası ile her bir araç bilgisine ulaşamayız.
+
+// Js array bilgisini string veriye çevirebilmek için ayrıca join() metodunu da kullanabiliriz.
+
+// join() metodunun toString() metodundan farkı her bir eleman arasına istediğimiz bir karakteri yerleştirebiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota'];
+var arabalar = cars.join("-");   // mazda-opel-toyota
+
+// ******************************************
+
+// Dizi Birleştirme (Merge)
+// Js array metotlarından concat() metodu ile birden fazla diziyi birleştirebiliriz.
+
+Örnek
+var cars1 = ['mazda','opel','toyota'];
+var cars2 = ['mercedes','bmw'];
+
+var cars = cars1.concat(cars2); // 'mazda','opel','toyota','mercedes','bmw'
+// ** concat() metodu orjinal dizi üzerinden bir değişiklik yapmaz. Birleştirilen elemanları yeni bir dizi olarak geriye döndürür. (cars)
+
+// ** Daha fazla diziyi birleştirmek istediğimizde concat() metodunu dizi1.concat(dizi2,dizi3,dizi4) şeklinde kullanabilirsiniz.
+
+// ******************************************
+
+// Dizi Parçalama (Slicing)
+// slice() metodu ile bir diziyi istediğimiz bir konumdan ayırarak yeni bir dizi oluşturabiliriz.
+
+Örnek
+var cars = ['mazda','opel','toyota','bmw'];
+var yenidizi = cars.slice(2);
+console.log(yenidizi);    // 'toyota','bmw'
+// ** Diziyi 2.indeksden itibaren bölerek yeni bir dizi oluşturuyoruz. Orjinal dizi üzerinde bir güncelleme yapılmaz.
+
+// slice() metoduna verdiğimiz ilk parametre ile başlangıç konumu, ikinci parametre olarak bitiş konumunu belirtiriz. (son eleman dahil olmaz.)
+
+Örnek
+var cars = ['mazda','opel','toyota','bmw'];
+var yenidizi = cars.slice(1,2);
+console.log(yenidizi);    // 'opel'
+
+
+
